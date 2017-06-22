@@ -9,6 +9,7 @@ public class Shape : MonoBehaviour {
     private Color blockColor;
     private int hits;
 
+
     public int Hits
     {
         get
@@ -48,9 +49,10 @@ public class Shape : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        Debug.Log("Collision");
         if (col.gameObject.GetComponent<Ball>())
         {
-
+            TakeHit();
         }
     }
 

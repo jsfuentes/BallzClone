@@ -50,8 +50,8 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012970350276}
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_UseAutoMass: 1
+  m_Mass: 0.12566371
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -68,7 +68,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1000012970350276}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9badf6eef40704f358ab25fc0c18e195, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7b3c4a937de4738b9472a0dafa0d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 13.06
 --- !u!212 &212000011626078806
 SpriteRenderer:
   m_ObjectHideFlags: 1
