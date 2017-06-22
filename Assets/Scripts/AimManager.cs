@@ -2,12 +2,14 @@
 using System.Collections;
 
 public class AimManager : MonoBehaviour {
+	private readonly int _AIM_HEIGHT = 1;
 
     public GameObject BallPrefab;
     private Vector2 _positionOfFirstTouch;
     private Vector2 _positionOfMostRecentTouch;
     private bool _firstTouchSet = false;
     private bool _mostRecentTouchSet = false;
+	private Vector3 _lineToTouch;
 	// Use this for initialization
 	void Start () {
 
@@ -42,8 +44,12 @@ public class AimManager : MonoBehaviour {
   void drawAimLine(){
     LineRenderer lineRenderer = GetComponent<LineRenderer>();
     lineRenderer.SetPosition(0, transform.position);
-    //lineRenderer.SetPosition(1, new Vector3(_positionOfFirstTouch.x + _positionOfMostRecentTouch.x, _positionOfMostRecentTouch.y - _positionOfFirstTouch.y , 0.0f));
-    lineRenderer.SetPosition(1, new Vector3(_positionOfMostRecentTouch.x - transform.position.x, _positionOfMostRecentTouch.y - transform.position.y, 0));
+	float lineToTouchX = _positionOfMostRecentTouch.x - transform.position.x;
+	float lineToTouchY = _positionOfMostRecentTouch.y - transform.position.y;
+	//scale pt to get pt on line at aim height
+	float scaleRatio = _AIM_HEIGHT/lineToTouchY;
+	Vector3 _lineToTouch = new Vector3 (scaleRatio * lineToTouchX, _AIM_HEIGHT, 0);
+	lineRenderer.SetPosition(1, _lineToTouch);
   }
   void deleteLine(){
     LineRenderer lineRenderer = GetComponent<LineRenderer>();
