@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000011327492282}
   - 212: {fileID: 212000013049384026}
-  - 114: {fileID: 114000010137508286}
   - 50: {fileID: 50000011800153808}
   - 61: {fileID: 61000012592720464}
+  - 114: {fileID: 114000010428456550}
   m_Layer: 0
   m_Name: Shape
   m_TagString: Untagged
@@ -84,10 +84,10 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010349289712}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -130,7 +130,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
---- !u!114 &114000010137508286
+--- !u!114 &114000010428456550
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -138,9 +138,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010349289712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 167544c1aaa9d4da186a5edb830e8598, type: 3}
+  m_Script: {fileID: 11500000, guid: 2378af8ff3097415683a4ecbc3393023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  debug: 1
 --- !u!212 &212000013049384026
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -9,6 +9,9 @@ public class Shape : MonoBehaviour {
     private Color _blockColor;
     private int _hits;
 
+    [Tooltip("This will init _hits to 100 for debug")]
+    public bool debug;
+
 
     public int Hits
     {
@@ -25,7 +28,11 @@ public class Shape : MonoBehaviour {
 
 	void Start ()
     {
-
+        // use this so that we can manually place blocks
+        if (debug)
+        {
+            _hits = 100;
+        }
 	}
 
 
@@ -49,7 +56,6 @@ public class Shape : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Collision");
         if (col.gameObject.GetComponent<Ball>())
         {
             TakeHit();
