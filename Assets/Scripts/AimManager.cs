@@ -10,6 +10,7 @@ public class AimManager : MonoBehaviour {
     private bool _firstTouchSet = false;
     private bool _mostRecentTouchSet = false;
 	private Vector3 _lineToTouch;
+
 	// Use this for initialization
 	void Start () {
 
@@ -27,12 +28,15 @@ public class AimManager : MonoBehaviour {
        drawAimLine();
        if(!Input.GetMouseButton(0)){
         //shoot the ballz
+        Vector2 direction = new Vector2(_positionOfMostRecentTouch.x - transform.position.x, _positionOfMostRecentTouch.y - transform.position.y);
+        SpawnBall(direction);
         _firstTouchSet = false;
         _mostRecentTouchSet = false;
         deleteLine();
         }
       }
      }
+
   void setFirstPosition(){
     _positionOfFirstTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     _firstTouchSet = true;
@@ -55,4 +59,10 @@ public class AimManager : MonoBehaviour {
     LineRenderer lineRenderer = GetComponent<LineRenderer>();
     lineRenderer.SetPosition(1, transform.position);
   }
+
+    void SpawnBall(Vector2 direction)
+    {
+        GameObject ball = (GameObject) Instantiate(BallPrefab, transform.position, Quaternion.identity);
+        ball.GetComponent<Ball>().Init(direction);
+    }
 }

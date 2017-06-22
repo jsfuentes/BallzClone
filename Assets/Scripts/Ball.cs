@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour {
 	void Start () 
     {
 	    // start movement here
+
 	}
 	
 	// Update is called once per frame
@@ -16,4 +17,12 @@ public class Ball : MonoBehaviour {
     {
 	    
 	}
+
+
+    public void Init(Vector2 direction)
+    {
+        direction.Normalize();
+
+        GetComponent<Rigidbody2D>().AddForce(direction * speed, ForceMode2D.Force);
+    }
 }
