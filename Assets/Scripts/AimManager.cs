@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class AimManager : MonoBehaviour {
-	private readonly float _AIM_HEIGHT = 0.4f;
+	private readonly float _AIM_HEIGHT = 2.5f;
 
     public GameObject BallPrefab;
     private Vector2 _positionOfFirstTouch;
@@ -52,7 +52,7 @@ public class AimManager : MonoBehaviour {
 	float lineToTouchY = _positionOfMostRecentTouch.y - transform.position.y;
 	//scale pt to get pt on line at aim height
 	float scaleRatio = _AIM_HEIGHT/lineToTouchY;
-	_lineToTouch = new Vector3 (scaleRatio * lineToTouchX, _AIM_HEIGHT, 0);
+        _lineToTouch = new Vector3 (scaleRatio * lineToTouchX + transform.position.x, _AIM_HEIGHT + transform.position.y, 0);
 	lineRenderer.SetPosition(1, _lineToTouch);
   }
   void deleteLine(){
