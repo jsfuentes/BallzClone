@@ -4,33 +4,33 @@ using System.Collections.Generic;
 
 public class Shape : MonoBehaviour {
 
-    public Utility.ShapeTypes type;
+    public Utility.ShapeTypes Type;
 
-    private Color blockColor;
-    private int hits;
+    private Color _blockColor;
+    private int _hits;
 
     public int Hits
     {
         get
         {
-            return hits;
+            return _hits;
         }
         set
         {
-            hits = value;
+            _hits = value;
         }
     }
 
 
-	void Start () 
+	void Start ()
     {
-	    
-	}
-	
 
-	void Update () 
+	}
+
+
+	void Update ()
     {
-	
+
 	}
 
     /// <summary>
@@ -40,10 +40,10 @@ public class Shape : MonoBehaviour {
     /// <param name="type">Type.</param>
     void Init(int hits, Utility.ShapeTypes type)
     {
-        this.hits = hits;
-        this.type = type;
+        _hits = hits;
+        _type = type;
 
-        SetText(this.hits.ToString());
+        SetText(_hits.ToString());
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -56,11 +56,11 @@ public class Shape : MonoBehaviour {
 
     private void TakeHit()
     {
-        if (hits - 1 != 0)
+        if (_hits - 1 != 0)
         {
-            hits--;  
+            _hits--;
             // update the text on the object
-            SetText(hits.ToString());
+            SetText(_hits.ToString());
         }
         else
         {
