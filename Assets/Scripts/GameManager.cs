@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Singleton class for the game manager. This should be the central 
@@ -8,10 +9,49 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
+    private AimManager aimManager;
+    private ShapeManager shapeManager;
 
-    // Property for Player Ball
+    private List<Ball> ballsInPlay;
+
+    // Property for Player Aim
+    public AimManager AimManager
+    {
+        get
+        {
+            if (aimManager == null)
+            {
+                aimManager = GameObject.FindObjectOfType<AimManager>();
+            }
+            return aimManager;
+        }
+    }
 
     // Property for ShapeManager
+    public ShapeManager ShapeManager
+    {
+        get
+        {
+            if (shapeManager == null)
+            {
+                shapeManager = GameObject.FindObjectOfType<ShapeManager>();
+            }
+            return shapeManager;
+        }
+    }
+
+    public List<Ball> Balls
+    {
+        get
+        {
+            return ballsInPlay;
+        }
+
+        set
+        {
+            ballsInPlay = value;
+        }
+    }
 
     void Awake()
     {
@@ -32,5 +72,10 @@ public class GameManager : MonoBehaviour {
     private void Init()
     {
         // level setup here
+        ballsInPlay = new List<Ball>();
+        aimManager = GameObject.FindObjectOfType<AimManager>();
+        shapeManager = GameObject.FindObjectOfType<ShapeManager>();
+
+
     }
 }
