@@ -9,21 +9,21 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
-    private AimManager aimManager;
-    private ShapeManager shapeManager;
+    private AimManager _aimManager;
+    private ShapeManager _shapeManager;
 
-    private List<Ball> ballsInPlay;
+    private List<Ball> _ballsInPlay;
 
     // Property for Player Aim
     public AimManager AimManager
     {
         get
         {
-            if (aimManager == null)
+            if (_aimManager == null)
             {
-                aimManager = GameObject.FindObjectOfType<AimManager>();
+                _aimManager = GameObject.FindObjectOfType<AimManager>();
             }
-            return aimManager;
+            return _aimManager;
         }
     }
 
@@ -32,11 +32,11 @@ public class GameManager : MonoBehaviour {
     {
         get
         {
-            if (shapeManager == null)
+            if (_shapeManager == null)
             {
-                shapeManager = GameObject.FindObjectOfType<ShapeManager>();
+                _shapeManager = GetComponent <ShapeManager>();
             }
-            return shapeManager;
+            return _shapeManager;
         }
     }
 
@@ -44,12 +44,12 @@ public class GameManager : MonoBehaviour {
     {
         get
         {
-            return ballsInPlay;
+            return _ballsInPlay;
         }
 
         set
         {
-            ballsInPlay = value;
+            _ballsInPlay = value;
         }
     }
 
@@ -72,10 +72,10 @@ public class GameManager : MonoBehaviour {
     private void Init()
     {
         // level setup here
-        ballsInPlay = new List<Ball>();
-        aimManager = GameObject.FindObjectOfType<AimManager>();
-        shapeManager = GameObject.FindObjectOfType<ShapeManager>();
+        _ballsInPlay = new List<Ball>();
+        _aimManager = GameObject.FindObjectOfType<AimManager>();
+        _shapeManager = GetComponent<ShapeManager>();
 
-
+        _shapeManager.Init();
     }
 }

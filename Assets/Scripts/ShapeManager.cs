@@ -8,11 +8,23 @@ using System.Collections.Generic;
 /// </summary>
 public class ShapeManager : MonoBehaviour {
 
-    // Add List<Shape> here
+    private List<GameObject> _shapes;
+
+    public List<GameObject> Shapes
+    {
+        get
+        {
+            return _shapes;
+        }
+        set
+        {
+            _shapes = value;
+        }
+    }
 
 	void Start () 
     {
-	
+	    
 	}
 	
 	void Update () 
@@ -20,8 +32,13 @@ public class ShapeManager : MonoBehaviour {
 	
 	}
 
+    public void Init()
+    {
+        _shapes = new List<GameObject>();
+    }
+          
     public void SpawnShapes()
     {
-
+        
     }
 }
