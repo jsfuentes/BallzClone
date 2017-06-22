@@ -41,7 +41,7 @@ public class Shape : MonoBehaviour {
     void Init(int hits, Utility.ShapeTypes type)
     {
         _hits = hits;
-        _type = type;
+        Type = type;
 
         SetText(_hits.ToString());
     }
