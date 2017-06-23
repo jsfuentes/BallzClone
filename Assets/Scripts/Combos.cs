@@ -26,15 +26,15 @@ public class Combos : MonoBehaviour {
 		if (ComboNumber > 3) {
 			//no text
 		}
-		if(3 <= ComboNumber < 5){
+		if(3 <= ComboNumber &&  ComboNumber < 5){
 			//nice
 			GameManager.instance.ScoreManager.Score += 100;
 		}
-		if (5 <= ComboNumber < 7) {
+		if (5 <= ComboNumber &&  ComboNumber < 7) {
 			//Great
 			GameManager.instance.ScoreManager.Score += 200;
 		}
-		if (7 <= ComboNumber < 10) {
+		if (7 <= ComboNumber &&  ComboNumber < 10) {
 			//Fuego
 			GameManager.instance.ScoreManager.Score += 300;
 		}
