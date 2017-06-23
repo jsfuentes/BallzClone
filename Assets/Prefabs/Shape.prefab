@@ -135,7 +135,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011168985772}
-  m_Text: '100
+  m_Text: '6
 
 '
   m_OffsetZ: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  debug: 1
+  debug: 0
 --- !u!212 &212000013049384026
 SpriteRenderer:
   m_ObjectHideFlags: 1

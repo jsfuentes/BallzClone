@@ -40,7 +40,7 @@ public abstract class SpawnableObject : MonoBehaviour
 
     public virtual void Init(int hits, Utility.SpawnTypes type)
     {
-
+        this.hits = hits;
     }
 
     public void ShiftDown()

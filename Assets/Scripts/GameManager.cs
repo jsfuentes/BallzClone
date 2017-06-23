@@ -10,12 +10,15 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
 	public int numOfBalls = 3;
+    public int powerUpsGatheredThisTurn = 0;
 
     private AimManager _aimManager;
     private SpawnManager _spawnManager;
 	private List<GameObject> _ballsInPlay;
     private ScoreManager _scoreManager;
-    private bool _canShoot = false;
+
+    // this manages turns
+    private bool _canShoot = true;
 
 
     // Property for Player Aim

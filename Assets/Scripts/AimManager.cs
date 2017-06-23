@@ -23,6 +23,10 @@ public class AimManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     _ballsText.text = "x" + GameManager.instance.numOfBalls;
+        if (GameManager.instance.CanShoot == false)
+        {
+            return;
+        }
 	   if(Input.GetMouseButton(0) && !_firstTouchSet){
        setFirstPosition();
      }
@@ -34,7 +38,10 @@ public class AimManager : MonoBehaviour {
        if(!Input.GetMouseButton(0)){
         //shoot the ballz
         Vector2 direction = new Vector2(_positionOfMostRecentTouch.x - transform.position.x, _positionOfMostRecentTouch.y - transform.position.y);
-		StartCoroutine(SpawnBalls(direction));
+       
+        //set turn
+        GameManager.instance.CanShoot = false;
+        StartCoroutine(SpawnBalls(direction));
         _firstTouchSet = false;
         _mostRecentTouchSet = false;
         deleteLine();

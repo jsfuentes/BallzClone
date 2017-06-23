@@ -24,8 +24,9 @@ public class PowerUp : SpawnableObject
             if(TypeOfPowerup == (int)TypesOfPowerup.AddBall)
             {
                 //add a Ball
+                GameManager.instance.SpawnManager.SpawnedObjects.Remove(gameObject);
                 Destroy(gameObject);
-                GameManager.instance.numOfBalls++;
+                GameManager.instance.powerUpsGatheredThisTurn++;
             }
         }
     }

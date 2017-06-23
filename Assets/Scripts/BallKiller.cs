@@ -39,6 +39,19 @@ public class BallKiller : MonoBehaviour {
 			//coll.gameObject.GetComponent<Ball>().speed = 0;
 			coll.rigidbody.angularVelocity = 0f;
 			NumberOfBalls++;
+
+            Debug.Log("Balls: " + NumberOfBalls);
+            if (GameManager.instance.numOfBalls == NumberOfBalls)
+            {
+                Debug.Log("done");
+                // we have all the balls and need to switch state
+                GameManager.instance.SpawnManager.ShiftObjects();
+                NumberOfBalls = 0;
+
+                //update ball count now that we are done to reflect collected balls
+                GameManager.instance.numOfBalls += GameManager.instance.powerUpsGatheredThisTurn;
+                GameManager.instance.powerUpsGatheredThisTurn = 0;
+            }
 		}
 	}
 }

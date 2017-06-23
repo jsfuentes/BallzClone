@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6945406a5dcd94642a6220751aad2af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 3
   debug: 0
   TypeOfPowerup: 0
 --- !u!212 &212000013628462550

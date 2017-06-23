@@ -44,6 +44,14 @@ public class SpawnManager : MonoBehaviour {
         SpawnObjects();
     }
 
+    public void ShiftObjects()
+    {
+        for (int i = 0; i < _spawnedObjects.Count; ++i)
+        {
+            _spawnedObjects[i].GetComponent<SpawnableObject>().ShiftDown();
+        }
+    }
+
     public void ReadyToSpawn()
     {
         lock (_lockObject)
@@ -54,6 +62,9 @@ public class SpawnManager : MonoBehaviour {
             {
                 SpawnObjects();
                 _readyToSpawn = 0;
+
+                // switch turn
+                GameManager.instance.CanShoot = true;
             }
         }
 
@@ -87,12 +98,14 @@ public class SpawnManager : MonoBehaviour {
                     int slot = Random.Range(0, SpawnableShapes.Count);
                     GameObject shape = (GameObject)Instantiate(SpawnableShapes[slot], SpawnLocations[index].position, Quaternion.identity);
                     _spawnedObjects.Add(shape);
+                    shape.GetComponent<Shape>().Init(6, Utility.SpawnTypes.SQUARE);
                 }
                 else
                 {
                     int slot = Random.Range(0, SpawnablePowerUps.Count);
                     GameObject powerUp = (GameObject)Instantiate(SpawnablePowerUps[slot], SpawnLocations[index].position, Quaternion.identity);
                     _spawnedObjects.Add(powerUp);
+                    powerUp.GetComponent<PowerUp>().Init(1, Utility.SpawnTypes.BALL_POWERUP);
                 }
             }
         }
