@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Shape : SpawnableObject 
 {
+	private Combos _comboManager;
+
 	void Start ()
     {
         // use this so that we can manually place blocks
@@ -23,6 +25,7 @@ public class Shape : SpawnableObject
         base.Init(hits, type);
 
         SetText(hits.ToString());
+		_comboManager = GameObject.FindGameObjectWithTag ("Combo").GetComponent<Combos> ();
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -45,6 +48,7 @@ public class Shape : SpawnableObject
         }
         else
         {
+			_comboManager.AddToCombo ();
             // remove from list of shapes and destroy
             List<GameObject> spawned = GameManager.instance.SpawnManager.SpawnedObjects;
             if (spawned != null)
@@ -54,6 +58,7 @@ public class Shape : SpawnableObject
             GameManager.instance.ScoreManager.Score++;
             GameManager.instance.ScoreManager.UpdateScoreText();
             Destroy(gameObject);
+
         }
     }
         

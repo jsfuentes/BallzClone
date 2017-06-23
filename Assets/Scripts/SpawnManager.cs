@@ -18,6 +18,7 @@ public class SpawnManager : MonoBehaviour {
     private int _readyToSpawn = 0;
 
     private Object _lockObject;
+	private Combos _comboManager;
 
     public List<GameObject> SpawnedObjects
     {
@@ -34,6 +35,7 @@ public class SpawnManager : MonoBehaviour {
     public void Init()
     {
         _spawnedObjects = new List<GameObject>();
+		_comboManager = GameObject.FindGameObjectWithTag("Combo").GetComponent<Combos> ();
         SpawnLocations = new List<Transform>();
         for (int i = 0; i < transform.childCount; ++i)
         {
@@ -42,6 +44,7 @@ public class SpawnManager : MonoBehaviour {
         _lockObject = new Object();
 
         SpawnObjects();
+		_comboManager.StartCombo();
     }
 
     public void ShiftObjects()
@@ -64,6 +67,7 @@ public class SpawnManager : MonoBehaviour {
 
                 // switch turn
                 GameManager.instance.CanShoot = true;
+				_comboManager.StartCombo();
             }
         }
 
