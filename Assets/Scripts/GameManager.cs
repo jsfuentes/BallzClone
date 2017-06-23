@@ -9,11 +9,13 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
+	public int numOfBalls = 3;
+
     private AimManager _aimManager;
     private ShapeManager _shapeManager;
+	private List<GameObject> _ballsInPlay;
     private ScoreManager _scoreManager;
 
-    private List<Ball> _ballsInPlay;
 
     // Property for Player Aim
     public AimManager AimManager
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public List<Ball> Balls
+	public List<GameObject> Balls
     {
         get
         {
@@ -81,8 +83,13 @@ public class GameManager : MonoBehaviour {
     private void Init()
     {
         // level setup here
+<<<<<<< HEAD
+		_ballsInPlay = new List<GameObject>();
+        _aimManager = GameObject.FindObjectOfType<AimManager>();
+=======
         _ballsInPlay = new List<Ball>();
         _aimManager = GameObject.FindObjectOfType<AimManager>().GetComponent<AimManager>();
+>>>>>>> 5fb2968d8985d707d01d6ffdd755387c3d23b94f
         _shapeManager = GetComponent<ShapeManager>();
         _scoreManager = GetComponent<ScoreManager>();
 

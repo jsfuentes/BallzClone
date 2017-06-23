@@ -25,4 +25,9 @@ public class Ball : MonoBehaviour {
 
         GetComponent<Rigidbody2D>().AddForce(direction * speed, ForceMode2D.Force);
     }
+
+	public void moveDown()
+	{
+		
+	}
 }
