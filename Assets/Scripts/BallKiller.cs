@@ -5,6 +5,7 @@ public class BallKiller : MonoBehaviour {
 
 	public float FirstBallX;
 	public bool FirstBallFound = false;
+	public int NumberOfBalls = 0;
 	// Use this for initialization
 	void Start () {
 
@@ -22,7 +23,10 @@ public class BallKiller : MonoBehaviour {
 				FirstBallX = coll.gameObject.transform.position.x;
 				FirstBallFound = true;
 			}
-			Destroy(coll.gameObject);
+			//coll.gameObject.GetComponent<Ball>().speed = 0;
+			coll.rigidbody.velocity = new Vector2(0,0);
+			coll.rigidbody.angularVelocity = 0f;
+			NumberOfBalls++;
 		}
 	}
 }
