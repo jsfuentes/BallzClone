@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AimManager : MonoBehaviour {
 	private readonly float _AIM_HEIGHT = 2.5f;
+	private readonly float _TIME_TO_WAIT = .3f;
 
     public GameObject BallPrefab;
     private Vector2 _positionOfFirstTouch;
@@ -29,7 +31,7 @@ public class AimManager : MonoBehaviour {
        if(!Input.GetMouseButton(0)){
         //shoot the ballz
         Vector2 direction = new Vector2(_positionOfMostRecentTouch.x - transform.position.x, _positionOfMostRecentTouch.y - transform.position.y);
-        SpawnBall(direction);
+		StartCoroutine(SpawnBalls(direction));
         _firstTouchSet = false;
         _mostRecentTouchSet = false;
         deleteLine();
@@ -60,9 +62,17 @@ public class AimManager : MonoBehaviour {
     lineRenderer.SetPosition(1, transform.position);
   }
 
-    void SpawnBall(Vector2 direction)
-    {
-        GameObject ball = (GameObject) Instantiate(BallPrefab, transform.position, Quaternion.identity);
-        ball.GetComponent<Ball>().Init(direction);
-    }
+	/// <summary>
+	/// Spawns the balls and give GameManager a list of balls.
+	/// </summary>
+	/// <param name="direction">Direction.</param>
+
+    IEnumerator SpawnBalls(Vector2 direction) {
+        Debug.Log ("Balls Spawned Num " + GameManager.instance.numOfBalls);
+		for(int i = 0; i < GameManager.instance.numOfBalls; i++){
+            GameObject ball = (GameObject) Instantiate(BallPrefab, transform.position, Quaternion.identity);
+            ball.GetComponent<Ball>().Init(direction);
+			yield return new WaitForSeconds (_TIME_TO_WAIT);
+		}
+	}
 }
