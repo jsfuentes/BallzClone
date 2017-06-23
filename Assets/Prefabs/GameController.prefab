@@ -636,8 +636,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167544c1aaa9d4da186a5edb830e8598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnableObjects:
+  SpawnableShapes:
   - {fileID: 1000010349289712, guid: d9ad50f16848f4213bd10461ea03eea7, type: 2}
+  SpawnablePowerUps:
+  - {fileID: 1000011069653646, guid: d6db191dff261471ba38732fa5d16bd7, type: 2}
 --- !u!114 &114000012578818028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -720,6 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numOfBalls: 3
+  powerUpsGatheredThisTurn: 0
 --- !u!222 &222000012483278608
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Singleton class for the game manager. This should be the central
@@ -41,7 +42,6 @@ public class GameManager : MonoBehaviour {
         {
             if (_spawnManager == null)
             {
-                Debug.Log("null");
                 _spawnManager = transform.GetChild(1).GetComponent<SpawnManager>();
             }
             return _spawnManager;
@@ -94,7 +94,10 @@ public class GameManager : MonoBehaviour {
 
         //make sure this is not destoyed on scene reload or change
         DontDestroyOnLoad(gameObject);
-        this.Init();
+        //this.Init();
+
+        SceneManager.activeSceneChanged += OnLevelLoaded;
+
     }
 
     private void Init()
@@ -107,5 +110,20 @@ public class GameManager : MonoBehaviour {
         _scoreManager = GetComponent<ScoreManager>();
 
         _spawnManager.Init();
+    }
+
+    public void CleanUpForGameOver()
+    {
+        _spawnManager.CleanUp();
+        _scoreManager.Score = 0;
+        _canShoot = true;
+    }
+
+    void OnLevelLoaded(Scene scene, Scene sceneTwo)
+    {
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            Init();
+        }
     }
 }

@@ -109,4 +109,13 @@ public class SpawnManager : MonoBehaviour {
             }
         }
     }
+
+    /// <summary>
+    /// Clean up lists at game over
+    /// </summary>
+    public void CleanUp()
+    {
+        _spawnedObjects.Clear();
+
+    }
 }

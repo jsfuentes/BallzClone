@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BallKiller : MonoBehaviour {
 
@@ -17,30 +18,34 @@ public class BallKiller : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		if(coll.gameObject.GetComponent<Ball>()){
-			if(!FirstBallFound){
-				FirstBallX = coll.gameObject.transform.position.x;
-				FirstBallFound = true;
-				coll.rigidbody.velocity = new Vector2(0,0);
-			}
-			else{
-				//Debug.Log("collision");
-				//coll.rigidbody.velocity = new Vector2((FirstBallX-coll.gameObject.transform.position.x), 0);
-				if(FirstBallX > coll.gameObject.transform.position.x){
-					coll.rigidbody.velocity = new Vector2(10, 0);
-				}
-				if(FirstBallX < coll.gameObject.transform.position.x){
-					coll.rigidbody.velocity = new Vector2(-10, 0);
-				}
-				coll.gameObject.GetComponent<Ball>().active = false;
-				coll.gameObject.GetComponent<Ball>().FirstBallX = FirstBallX;
-				//Destroy(coll.gameObject, 1);
-			}
-			//coll.gameObject.GetComponent<Ball>().speed = 0;
-			coll.rigidbody.angularVelocity = 0f;
-			NumberOfBalls++;
+        if (coll.gameObject.GetComponent<Ball>())
+        {
+            if (!FirstBallFound)
+            {
+                FirstBallX = coll.gameObject.transform.position.x;
+                FirstBallFound = true;
+                coll.rigidbody.velocity = new Vector2(0, 0);
+            }
+            else
+            {
+                //Debug.Log("collision");
+                //coll.rigidbody.velocity = new Vector2((FirstBallX-coll.gameObject.transform.position.x), 0);
+                if (FirstBallX > coll.gameObject.transform.position.x)
+                {
+                    coll.rigidbody.velocity = new Vector2(10, 0);
+                }
+                if (FirstBallX < coll.gameObject.transform.position.x)
+                {
+                    coll.rigidbody.velocity = new Vector2(-10, 0);
+                }
+                coll.gameObject.GetComponent<Ball>().active = false;
+                coll.gameObject.GetComponent<Ball>().FirstBallX = FirstBallX;
+                //Destroy(coll.gameObject, 1);
+            }
+            //coll.gameObject.GetComponent<Ball>().speed = 0;
+            coll.rigidbody.angularVelocity = 0f;
+            NumberOfBalls++;
 
-            Debug.Log("Balls: " + NumberOfBalls);
             if (GameManager.instance.numOfBalls == NumberOfBalls)
             {
                 // we have all the balls and need to switch state
@@ -51,6 +56,13 @@ public class BallKiller : MonoBehaviour {
                 GameManager.instance.numOfBalls += GameManager.instance.powerUpsGatheredThisTurn;
                 GameManager.instance.powerUpsGatheredThisTurn = 0;
             }
-		}
+        }
+         else if (coll.gameObject.GetComponent<Shape>())
+        {
+            //handle game over
+            Debug.Log("GameOver");
+            GameManager.instance.CleanUpForGameOver();
+            SceneManager.LoadScene(2);
+        }
 	}
 }
