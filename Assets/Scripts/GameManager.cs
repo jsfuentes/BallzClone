@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
     private AimManager _aimManager;
     private ShapeManager _shapeManager;
 	private List<GameObject> _ballsInPlay;
+    private ScoreManager _scoreManager;
+
 
     // Property for Player Aim
     public AimManager AimManager
@@ -54,6 +56,14 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public ScoreManager ScoreManager
+    {
+        get
+        {
+            return _scoreManager;
+        }
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -73,9 +83,15 @@ public class GameManager : MonoBehaviour {
     private void Init()
     {
         // level setup here
+<<<<<<< HEAD
 		_ballsInPlay = new List<GameObject>();
         _aimManager = GameObject.FindObjectOfType<AimManager>();
+=======
+        _ballsInPlay = new List<Ball>();
+        _aimManager = GameObject.FindObjectOfType<AimManager>().GetComponent<AimManager>();
+>>>>>>> 5fb2968d8985d707d01d6ffdd755387c3d23b94f
         _shapeManager = GetComponent<ShapeManager>();
+        _scoreManager = GetComponent<ScoreManager>();
 
         _shapeManager.Init();
     }
