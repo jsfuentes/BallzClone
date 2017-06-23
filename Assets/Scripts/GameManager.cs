@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour {
 	public int numOfBalls = 3;
 
     private AimManager _aimManager;
-    private ShapeManager _shapeManager;
+    private SpawnManager _spawnManager;
 	private List<GameObject> _ballsInPlay;
     private ScoreManager _scoreManager;
+    private bool _canShoot = false;
 
 
     // Property for Player Aim
@@ -31,15 +32,16 @@ public class GameManager : MonoBehaviour {
     }
 
     // Property for ShapeManager
-    public ShapeManager ShapeManager
+    public SpawnManager SpawnManager
     {
         get
         {
-            if (_shapeManager == null)
+            if (_spawnManager == null)
             {
-                _shapeManager = GetComponent <ShapeManager>();
+                Debug.Log("null");
+                _spawnManager = transform.GetChild(1).GetComponent<SpawnManager>();
             }
-            return _shapeManager;
+            return _spawnManager;
         }
     }
 
@@ -61,6 +63,18 @@ public class GameManager : MonoBehaviour {
         get
         {
             return _scoreManager;
+        }
+    }
+
+    public bool CanShoot
+    {
+        get
+        {
+            return _canShoot;
+        }
+        set
+        {
+            _canShoot = value;
         }
     }
 
@@ -86,9 +100,9 @@ public class GameManager : MonoBehaviour {
 
         _ballsInPlay = new List<GameObject>();
         _aimManager = GameObject.FindObjectOfType<AimManager>().GetComponent<AimManager>();
-        _shapeManager = GetComponent<ShapeManager>();
+        _spawnManager = transform.GetChild(1).GetComponent<SpawnManager>();
         _scoreManager = GetComponent<ScoreManager>();
 
-        _shapeManager.Init();
+        _spawnManager.Init();
     }
 }
