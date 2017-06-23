@@ -2,43 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Shape : MonoBehaviour {
-
-    public Utility.ShapeTypes Type;
-
-    private Color _blockColor;
-    private int _hits;
-
-    [Tooltip("This will init _hits to 20 for debug")]
-    public bool debug;
-
-
-    public int Hits
-    {
-        get
-        {
-            return _hits;
-        }
-        set
-        {
-            _hits = value;
-        }
-    }
-
-
+public class Shape : SpawnableObject 
+{
 	void Start ()
     {
         // use this so that we can manually place blocks
         if (debug)
         {
-            _hits = 20;
+            hits = 20;
         }
-	}
-
-
-	void Update ()
-    {
-
 	}
 
     /// <summary>
@@ -46,12 +18,11 @@ public class Shape : MonoBehaviour {
     /// </summary>
     /// <param name="hits">Hits.</param>
     /// <param name="type">Type.</param>
-    void Init(int hits, Utility.ShapeTypes type)
+    public override void Init(int hits, Utility.SpawnTypes type)
     {
-        _hits = hits;
-        Type = type;
+        base.Init(hits, type);
 
-        SetText(_hits.ToString());
+        SetText(hits.ToString());
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -62,16 +33,15 @@ public class Shape : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Either subtracts one from hits or removes the ball and updates the score
-    /// </summary>
-    private void TakeHit()
+    protected override void TakeHit()
     {
-        if (_hits - 1 != 0)
+        base.TakeHit();
+
+        if (hits - 1 != 0)
         {
-            _hits--;
+            hits--;
             // update the text on the object
-            SetText(_hits.ToString());
+            SetText(hits.ToString());
         }
         else
         {
@@ -85,16 +55,11 @@ public class Shape : MonoBehaviour {
             GameManager.instance.ScoreManager.UpdateScoreText();
             Destroy(gameObject);
         }
-
     }
-
+        
     private void SetText(string text)
     {
         transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = text;
     }
 
-    private void SetColor(Color color)
-    {
-        GetComponent<SpriteRenderer>().color = color;
-    }
 }
