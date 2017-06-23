@@ -43,7 +43,6 @@ public class BallKiller : MonoBehaviour {
             Debug.Log("Balls: " + NumberOfBalls);
             if (GameManager.instance.numOfBalls == NumberOfBalls)
             {
-                Debug.Log("done");
                 // we have all the balls and need to switch state
                 GameManager.instance.SpawnManager.ShiftObjects();
                 NumberOfBalls = 0;

@@ -57,7 +57,6 @@ public class SpawnManager : MonoBehaviour {
         lock (_lockObject)
         {
             _readyToSpawn++;
-            Debug.Log(_readyToSpawn);
             if (_readyToSpawn == _spawnedObjects.Count)
             {
                 SpawnObjects();
