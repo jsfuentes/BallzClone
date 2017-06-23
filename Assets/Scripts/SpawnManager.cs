@@ -62,7 +62,7 @@ public class SpawnManager : MonoBehaviour {
     private void SpawnObjects()
     {
         // determine how many spots we are going to fill
-        int spotsToFill = Random.Range(2, SpawnLocations.Count - 2);
+        int spotsToFill = Random.Range(1, SpawnLocations.Count - 2);
 
         List<bool> filledSpots = new List<bool>();
         for (int i = 0; i < SpawnLocations.Count; ++i)
@@ -82,7 +82,7 @@ public class SpawnManager : MonoBehaviour {
                 // 75% chance we spawn a shape, then choose a random shape
                 // 25% chance we spawn a powerup
                 float chance = Random.Range(0, 10.0f);
-                if (chance <= 75.0f)
+                if (chance <= 7.5f)
                 {
                     int slot = Random.Range(0, SpawnableShapes.Count);
                     GameObject shape = (GameObject)Instantiate(SpawnableShapes[slot], SpawnLocations[index].position, Quaternion.identity);
