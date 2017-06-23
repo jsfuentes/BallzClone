@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
-/// Singleton class for the game manager. This should be the central 
+/// Singleton class for the game manager. This should be the central
 /// point to access everything we need.
 /// </summary>
 public class GameManager : MonoBehaviour {

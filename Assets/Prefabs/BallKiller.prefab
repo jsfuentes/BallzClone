@@ -87,6 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstBallX: 0
   FirstBallFound: 0
+  NumberOfBalls: 0
 --- !u!212 &212000013791079872
 SpriteRenderer:
   m_ObjectHideFlags: 1

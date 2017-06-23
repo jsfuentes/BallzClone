@@ -27,11 +27,13 @@ public class BallKiller : MonoBehaviour {
 				//Debug.Log("collision");
 				//coll.rigidbody.velocity = new Vector2((FirstBallX-coll.gameObject.transform.position.x), 0);
 				if(FirstBallX > coll.gameObject.transform.position.x){
-					coll.rigidbody.velocity = new Vector2(coll.gameObject.GetComponent<Ball>().speed, 0);
+					coll.rigidbody.velocity = new Vector2(10, 0);
 				}
 				if(FirstBallX < coll.gameObject.transform.position.x){
-					coll.rigidbody.velocity = new Vector2(-coll.gameObject.GetComponent<Ball>().speed, 0);
+					coll.rigidbody.velocity = new Vector2(-10, 0);
 				}
+				coll.gameObject.GetComponent<Ball>().active = false;
+				coll.gameObject.GetComponent<Ball>().FirstBallX = FirstBallX;
 				//Destroy(coll.gameObject, 1);
 			}
 			//coll.gameObject.GetComponent<Ball>().speed = 0;
