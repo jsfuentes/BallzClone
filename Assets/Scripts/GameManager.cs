@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 
     private AimManager _aimManager;
     private ShapeManager _shapeManager;
-	private List<GameObject> _ballsInPlay;
+    private List<GameObject> _ballsInPlay;
     private ScoreManager _scoreManager;
 
 
