@@ -46,10 +46,10 @@ public class Shape : SpawnableObject
         else
         {
             // remove from list of shapes and destroy
-            List<GameObject> shapes = GameManager.instance.ShapeManager.Shapes;
-            if (shapes != null)
+            List<GameObject> spawned = GameManager.instance.SpawnManager.SpawnedObjects;
+            if (spawned != null)
             {
-                shapes.Remove(gameObject);
+                spawned.Remove(gameObject);
             }
             GameManager.instance.ScoreManager.Score++;
             GameManager.instance.ScoreManager.UpdateScoreText();

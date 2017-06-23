@@ -15,15 +15,18 @@ public class PowerUp : SpawnableObject
         base.TakeHit();
 
     }
-    void OnTriggerEnter2D(Collider2D coll) {
-        TakeHit();
-        //Debug.Log("coll");
-        if(TypeOfPowerup == (int)TypesOfPowerup.AddBall){
-          //add a Ball
-          Destroy(gameObject);
-          //TODO: make this not happen till the end of the round
-          GameManager.instance.numOfBalls++;
-
+    void OnTriggerEnter2D(Collider2D coll) 
+    {
+        if (coll.gameObject.GetComponent<Ball>())
+        {
+            TakeHit();
+            //Debug.Log("coll");
+            if(TypeOfPowerup == (int)TypesOfPowerup.AddBall)
+            {
+                //add a Ball
+                Destroy(gameObject);
+                GameManager.instance.numOfBalls++;
+            }
         }
     }
 }

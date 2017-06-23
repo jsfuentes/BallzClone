@@ -46,6 +46,7 @@ public abstract class SpawnableObject : MonoBehaviour
     public void ShiftDown()
     {
         StartCoroutine(AnimateShift());
+
     }
 
     private IEnumerator AnimateShift()
@@ -65,6 +66,8 @@ public abstract class SpawnableObject : MonoBehaviour
             transform.position = pos;
             yield return null;
         }
+        GameManager.instance.SpawnManager.ReadyToSpawn();
+
     }
 
     /// <summary>
