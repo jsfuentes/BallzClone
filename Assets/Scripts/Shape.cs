@@ -9,7 +9,7 @@ public class Shape : MonoBehaviour {
     private Color _blockColor;
     private int _hits;
 
-    [Tooltip("This will init _hits to 100 for debug")]
+    [Tooltip("This will init _hits to 20 for debug")]
     public bool debug;
 
 
@@ -31,7 +31,7 @@ public class Shape : MonoBehaviour {
         // use this so that we can manually place blocks
         if (debug)
         {
-            _hits = 100;
+            _hits = 20;
         }
 	}
 
@@ -62,6 +62,9 @@ public class Shape : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Either subtracts one from hits or removes the ball and updates the score
+    /// </summary>
     private void TakeHit()
     {
         if (_hits - 1 != 0)
@@ -78,6 +81,8 @@ public class Shape : MonoBehaviour {
             {
                 shapes.Remove(gameObject);
             }
+            GameManager.instance.ScoreManager.Score++;
+            GameManager.instance.ScoreManager.UpdateScoreText();
             Destroy(gameObject);
         }
 
