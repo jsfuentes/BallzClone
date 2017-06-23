@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
-/// Singleton class for the game manager. This should be the central 
+/// Singleton class for the game manager. This should be the central
 /// point to access everything we need.
 /// </summary>
 public class GameManager : MonoBehaviour {
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour {
     {
         // level setup here
 
-        _ballsInPlay = new List<Ball>();
+        _ballsInPlay = new List<GameObject>();
         _aimManager = GameObject.FindObjectOfType<AimManager>().GetComponent<AimManager>();
         _shapeManager = GetComponent<ShapeManager>();
         _scoreManager = GetComponent<ScoreManager>();

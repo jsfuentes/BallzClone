@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,15 +12,17 @@ public class AimManager : MonoBehaviour {
     private Vector2 _positionOfMostRecentTouch;
     private bool _firstTouchSet = false;
     private bool _mostRecentTouchSet = false;
-	private Vector3 _lineToTouch;
+    private Vector3 _lineToTouch;
+    private Text _ballsText;
 
-	// Use this for initialization
-	void Start () {
-
-	}
+    // Use this for initialization
+    void Start () {
+       _ballsText = transform.GetChild(0).transform.GetChild(0).GetComponent<Text>();
+    }
 
 	// Update is called once per frame
 	void Update () {
+    _ballsText.text = "x" + GameManager.instance.numOfBalls;
 	   if(Input.GetMouseButton(0) && !_firstTouchSet){
        setFirstPosition();
      }
@@ -68,8 +71,9 @@ public class AimManager : MonoBehaviour {
 	/// <param name="direction">Direction.</param>
 
     IEnumerator SpawnBalls(Vector2 direction) {
-        Debug.Log ("Balls Spawned Num " + GameManager.instance.numOfBalls);
-		for(int i = 0; i < GameManager.instance.numOfBalls; i++){
+        //Debug.Log ("Balls Spawned Num " + GameManager.instance.numOfBalls);
+        int numberOfBallsToSpawn = GameManager.instance.numOfBalls;
+		for(int i = 0; i < numberOfBallsToSpawn; i++){
             GameObject ball = (GameObject) Instantiate(BallPrefab, transform.position, Quaternion.identity);
             ball.GetComponent<Ball>().Init(direction);
 			yield return new WaitForSeconds (_TIME_TO_WAIT);

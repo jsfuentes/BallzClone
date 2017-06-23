@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bd965054f794678aaf4948cc892a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numOfBalls: 3
 --- !u!222 &222000012483278608
 CanvasRenderer:
   m_ObjectHideFlags: 1
