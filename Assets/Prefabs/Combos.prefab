@@ -23,7 +23,7 @@ GameObject:
   - 114: {fileID: 114000012333882546}
   m_Layer: 0
   m_Name: Combos
-  m_TagString: Combos
+  m_TagString: Combo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e15bfa47e6ca4ddc91d5075711ce36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ComboNumber: 0
 --- !u!212 &212000011615734214
 SpriteRenderer:
   m_ObjectHideFlags: 1

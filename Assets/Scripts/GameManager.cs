@@ -126,4 +126,7 @@ public class GameManager : MonoBehaviour {
             Init();
         }
     }
+	public void MoveAimManager(float newX){
+		_aimManager.moveX(newX);
+	}
 }

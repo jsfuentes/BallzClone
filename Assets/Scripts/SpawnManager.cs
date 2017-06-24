@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour {
 
     private Object _lockObject;
 	private Combos _comboManager;
+	private int TurnNumber = 1;
 
     public List<GameObject> SpawnedObjects
     {
@@ -45,6 +46,7 @@ public class SpawnManager : MonoBehaviour {
 
         SpawnObjects();
 		_comboManager.StartCombo();
+
     }
 
     public void ShiftObjects()
@@ -68,6 +70,7 @@ public class SpawnManager : MonoBehaviour {
                 // switch turn
                 GameManager.instance.CanShoot = true;
 				_comboManager.StartCombo();
+				TurnNumber++;
             }
         }
 
@@ -101,7 +104,7 @@ public class SpawnManager : MonoBehaviour {
                     int slot = Random.Range(0, SpawnableShapes.Count);
                     GameObject shape = (GameObject)Instantiate(SpawnableShapes[slot], SpawnLocations[index].position, Quaternion.identity);
                     _spawnedObjects.Add(shape);
-                    shape.GetComponent<Shape>().Init(6, Utility.SpawnTypes.SQUARE);
+					shape.GetComponent<Shape>().Init(Random.Range(2,4)+TurnNumber, Utility.SpawnTypes.SQUARE);
                 }
                 else
                 {
@@ -120,6 +123,7 @@ public class SpawnManager : MonoBehaviour {
     public void CleanUp()
     {
         _spawnedObjects.Clear();
+		TurnNumber = 1;
 
     }
 }
