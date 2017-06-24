@@ -639,8 +639,18 @@ MonoBehaviour:
   SpawnableShapes:
   - {fileID: 1000010349289712, guid: d9ad50f16848f4213bd10461ea03eea7, type: 2}
   - {fileID: 1000011432091204, guid: 82e868eb108cc4d3ead1da4f912e6399, type: 2}
+  - {fileID: 1000013191810076, guid: 15bbcfe62d5f349b393274adb5c39c27, type: 2}
+  - {fileID: 1000013954821906, guid: 5ee953231cf914cf981bdb3c4c5c5084, type: 2}
   SpawnablePowerUps:
   - {fileID: 1000011069653646, guid: d6db191dff261471ba38732fa5d16bd7, type: 2}
+  ColorDifficultyScale:
+  - {r: 0.3888438, g: 1, b: 0.03676468, a: 0}
+  - {r: 0.9191176, g: 0.8991692, b: 0.19598834, a: 0}
+  - {r: 0.9264706, g: 0.5587012, b: 0.22480536, a: 0}
+  - {r: 0.9411765, g: 0.048442896, b: 0.048442896, a: 0}
+  - {r: 0.046550598, g: 0.40744385, b: 0.9044118, a: 0}
+  - {r: 0.65781826, g: 0.20247622, b: 0.78676474, a: 0}
+  ColorShiftRate: 10
 --- !u!114 &114000012578818028
 MonoBehaviour:
   m_ObjectHideFlags: 1

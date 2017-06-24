@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class SpawnableObject : MonoBehaviour 
 {
@@ -77,10 +78,5 @@ public abstract class SpawnableObject : MonoBehaviour
     {
         // if we ever need general hit data
 
-    }
-
-    protected void SetColor(Color color)
-    {
-        GetComponent<SpriteRenderer>().color = color;
     }
 }

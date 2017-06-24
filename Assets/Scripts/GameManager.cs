@@ -102,7 +102,9 @@ public class GameManager : MonoBehaviour {
 
     private void Init()
     {
-        // level setup here
+        // level setup here - camera aspect ratio
+       // ben wuz h3r3
+//        Camera.main.aspect = Screen.width / Screen.height;
 
         _ballsInPlay = new List<GameObject>();
         _aimManager = GameObject.FindObjectOfType<AimManager>().GetComponent<AimManager>();
@@ -116,6 +118,7 @@ public class GameManager : MonoBehaviour {
     {
         _spawnManager.CleanUp();
         _scoreManager.Score = 0;
+        _scoreManager.UpdateScoreText();
         _canShoot = true;
     }
 

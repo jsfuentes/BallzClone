@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class Shape : SpawnableObject 
 {
+    private List<Color> _colorScale;
+    private int _colorShiftRate;
+
+    public int ScoreAward = 10;
 	void Start ()
     {
         // use this so that we can manually place blocks
@@ -22,7 +26,12 @@ public class Shape : SpawnableObject
     {
         base.Init(hits, type);
 
+        _colorShiftRate = GameManager.instance.SpawnManager.ColorShiftRate;
+        _colorScale = GameManager.instance.SpawnManager.ColorDifficultyScale;
+
         SetText(hits.ToString());
+
+       // GetComponent<SpriteRenderer>().color = CalculateColor();
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -42,6 +51,7 @@ public class Shape : SpawnableObject
             hits--;
             // update the text on the object
             SetText(hits.ToString());
+            //GetComponent<SpriteRenderer>().color = CalculateColor();
         }
         else
         {
@@ -51,7 +61,7 @@ public class Shape : SpawnableObject
             {
                 spawned.Remove(gameObject);
             }
-            GameManager.instance.ScoreManager.Score++;
+            GameManager.instance.ScoreManager.Score += ScoreAward;
             GameManager.instance.ScoreManager.UpdateScoreText();
             Destroy(gameObject);
         }
@@ -60,6 +70,39 @@ public class Shape : SpawnableObject
     private void SetText(string text)
     {
         transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = text;
+    }
+
+    private Color CalculateColor()
+    {
+        //buckets of size _colorShiftRate
+        if (hits < _colorShiftRate)
+        {
+            return _colorScale[0];
+        }
+        else if (hits < 2 * _colorShiftRate)
+        {
+            return _colorScale[1];
+        }
+        else if (hits < 3 * _colorShiftRate)
+        {
+            return _colorScale[2];
+        }
+        else if (hits < 4 * _colorShiftRate)
+        {
+            return _colorScale[3];
+        }
+        else if (hits < 5 * _colorShiftRate)
+        {
+            return _colorScale[4];
+        }
+        else if (hits < 6 * _colorShiftRate)
+        {
+            return _colorScale[5];
+        }
+        else
+        {
+            return _colorScale[6];
+        }
     }
 
 }
