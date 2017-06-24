@@ -4,10 +4,14 @@ using System.Collections.Generic;
 
 public class Shape : SpawnableObject 
 {
+
     private List<Color> _colorScale;
     private int _colorShiftRate;
 
     public int ScoreAward = 10;
+
+	private Combos _comboManager;
+   
 	void Start ()
     {
         // use this so that we can manually place blocks
@@ -32,6 +36,7 @@ public class Shape : SpawnableObject
         SetText(hits.ToString());
 
        // GetComponent<SpriteRenderer>().color = CalculateColor();
+		_comboManager = GameObject.FindGameObjectWithTag ("Combo").GetComponent<Combos> ();
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -55,6 +60,7 @@ public class Shape : SpawnableObject
         }
         else
         {
+			_comboManager.AddToCombo ();
             // remove from list of shapes and destroy
             List<GameObject> spawned = GameManager.instance.SpawnManager.SpawnedObjects;
             if (spawned != null)
@@ -64,6 +70,7 @@ public class Shape : SpawnableObject
             GameManager.instance.ScoreManager.Score += ScoreAward;
             GameManager.instance.ScoreManager.UpdateScoreText();
             Destroy(gameObject);
+
         }
     }
         

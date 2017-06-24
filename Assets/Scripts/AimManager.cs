@@ -83,7 +83,19 @@ public class AimManager : MonoBehaviour {
 		for(int i = 0; i < numberOfBallsToSpawn; i++){
             GameObject ball = (GameObject) Instantiate(BallPrefab, transform.position, Quaternion.identity);
             ball.GetComponent<Ball>().Init(direction);
+			GameManager.instance.Balls.Add (ball);
 			yield return new WaitForSeconds (_TIME_TO_WAIT);
 		}
+		List<GameObject> Balls = GameManager.instance.Balls;
+		for (int i = 0; i < Balls.Count; i++) {
+			Debug.Log (i);
+			if (!Balls[i].GetComponent<Ball>().active) {
+				Destroy (Balls[i]);
+				GameManager.instance.Balls.Remove (Balls [i]);
+			}
+		}
+	}
+	public void moveX(float newX){
+		transform.position = new Vector2(newX, transform.position.y);
 	}
 }

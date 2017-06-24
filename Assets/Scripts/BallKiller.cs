@@ -10,6 +10,7 @@ public class BallKiller : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
 	}
 
 	// Update is called once per frame
@@ -25,6 +26,7 @@ public class BallKiller : MonoBehaviour {
                 FirstBallX = coll.gameObject.transform.position.x;
                 FirstBallFound = true;
                 coll.rigidbody.velocity = new Vector2(0, 0);
+				coll.gameObject.GetComponent<Ball>().active = false;
             }
             else
             {
@@ -55,6 +57,9 @@ public class BallKiller : MonoBehaviour {
                 //update ball count now that we are done to reflect collected balls
                 GameManager.instance.numOfBalls += GameManager.instance.powerUpsGatheredThisTurn;
                 GameManager.instance.powerUpsGatheredThisTurn = 0;
+				GameManager.instance.MoveAimManager (FirstBallX);
+				FirstBallFound = false;
+
             }
         }
          else if (coll.gameObject.GetComponent<Shape>())

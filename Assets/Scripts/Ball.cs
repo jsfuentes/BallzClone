@@ -20,7 +20,8 @@ public class Ball : MonoBehaviour {
     {
       if(!active){
         if((transform.position.x < (FirstBallX + _ballDeathRange/2)) && (transform.position.x > (FirstBallX - _ballDeathRange/2))){
-          Destroy(gameObject);
+			GameManager.instance.Balls.Remove (gameObject);
+			Destroy(gameObject);
         }
       }
 	}
