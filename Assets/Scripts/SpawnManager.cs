@@ -10,6 +10,9 @@ public class SpawnManager : MonoBehaviour {
 
     public List<GameObject> SpawnableShapes;
     public List<GameObject> SpawnablePowerUps;
+    public List<Color> ColorDifficultyScale;
+
+    public int ColorShiftRate = 2;
 
     private List<GameObject> _spawnedObjects;
 
@@ -104,6 +107,9 @@ public class SpawnManager : MonoBehaviour {
                     int slot = Random.Range(0, SpawnableShapes.Count);
                     GameObject shape = (GameObject)Instantiate(SpawnableShapes[slot], SpawnLocations[index].position, Quaternion.identity);
                     _spawnedObjects.Add(shape);
+
+                    shape.GetComponent<Shape>().Init(20, Utility.SpawnTypes.SQUARE);
+
 					shape.GetComponent<Shape>().Init(Random.Range(2,4)+TurnNumber, Utility.SpawnTypes.SQUARE);
                 }
                 else
