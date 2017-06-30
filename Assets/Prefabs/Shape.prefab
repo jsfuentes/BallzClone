@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   debug: 0
+  ScoreAward: 10
 --- !u!212 &212000013049384026
 SpriteRenderer:
   m_ObjectHideFlags: 1
