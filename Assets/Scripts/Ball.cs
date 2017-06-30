@@ -6,6 +6,8 @@ public class Ball : MonoBehaviour {
     public float speed;
     public bool active = true;
     public float FirstBallX;
+	public bool killme= false;
+	public bool firstBall = false;
     private float _ballDeathRange = 1f;
 
 	// Use this for initialization
@@ -18,10 +20,10 @@ public class Ball : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-      if(!active){
+      if(!active && !firstBall){
         if((transform.position.x < (FirstBallX + _ballDeathRange/2)) && (transform.position.x > (FirstBallX - _ballDeathRange/2))){
 			GameManager.instance.Balls.Remove (gameObject);
-			Destroy(gameObject);
+			Destroy (gameObject);
         }
       }
 	}

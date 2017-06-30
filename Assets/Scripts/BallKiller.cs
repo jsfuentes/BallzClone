@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class BallKiller : MonoBehaviour {
 
@@ -27,6 +28,7 @@ public class BallKiller : MonoBehaviour {
                 FirstBallFound = true;
                 coll.rigidbody.velocity = new Vector2(0, 0);
 				coll.gameObject.GetComponent<Ball>().active = false;
+
             }
             else
             {
@@ -43,6 +45,8 @@ public class BallKiller : MonoBehaviour {
                 coll.gameObject.GetComponent<Ball>().active = false;
                 coll.gameObject.GetComponent<Ball>().FirstBallX = FirstBallX;
                 //Destroy(coll.gameObject, 1);
+
+
             }
 
             coll.rigidbody.angularVelocity = 0f;
