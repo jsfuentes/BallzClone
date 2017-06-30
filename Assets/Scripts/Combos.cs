@@ -16,11 +16,11 @@ public class Combos : MonoBehaviour {
 	public void StartCombo(){
 		_finishCombo ();
 		ComboNumber = 0;
-		Debug.Log (ComboNumber);
+		//Debug.Log (ComboNumber);
 	}
 	public void AddToCombo(){
 		ComboNumber++;
-		Debug.Log (ComboNumber);
+		//Debug.Log (ComboNumber);
 	}
 	private void _finishCombo(){
 		if (ComboNumber > 3) {

@@ -23,7 +23,6 @@ GameObject:
   - 50: {fileID: 50000011236172348}
   - 58: {fileID: 58000013669674308}
   - 114: {fileID: 114000012538256930}
-  - 114: {fileID: 114000012316230688}
   m_Layer: 8
   m_Name: Ball
   m_TagString: Untagged
@@ -75,20 +74,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.73
---- !u!114 &114000012316230688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012970350276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea7b3c4a937de4738b9472a0dafa0d11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  active: 1
-  FirstBallX: 0
 --- !u!114 &114000012538256930
 MonoBehaviour:
   m_ObjectHideFlags: 1
