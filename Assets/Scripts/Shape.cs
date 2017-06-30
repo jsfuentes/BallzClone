@@ -35,7 +35,10 @@ public class Shape : SpawnableObject
 
         SetText(hits.ToString());
 
-       // GetComponent<SpriteRenderer>().color = CalculateColor();
+//        Color c = CalculateColor();
+//        gameObject.GetComponent<SpriteRenderer>().material.color = c;
+//        gameObject.GetComponent<SpriteRenderer>().material = mat;
+////        GetComponent<SpriteRenderer>().color = Color.red;
 		_comboManager = GameObject.FindGameObjectWithTag ("Combo").GetComponent<Combos> ();
     }
 
@@ -69,6 +72,9 @@ public class Shape : SpawnableObject
             }
             GameManager.instance.ScoreManager.Score += ScoreAward;
             GameManager.instance.ScoreManager.UpdateScoreText();
+
+            GameManager.instance.SpawnParticles(transform.position);
+
             Destroy(gameObject);
 
         }
@@ -81,35 +87,35 @@ public class Shape : SpawnableObject
 
     private Color CalculateColor()
     {
-        //buckets of size _colorShiftRate
-        if (hits < _colorShiftRate)
-        {
-            return _colorScale[0];
-        }
-        else if (hits < 2 * _colorShiftRate)
-        {
-            return _colorScale[1];
-        }
-        else if (hits < 3 * _colorShiftRate)
-        {
-            return _colorScale[2];
-        }
-        else if (hits < 4 * _colorShiftRate)
-        {
-            return _colorScale[3];
-        }
-        else if (hits < 5 * _colorShiftRate)
-        {
-            return _colorScale[4];
-        }
-        else if (hits < 6 * _colorShiftRate)
-        {
-            return _colorScale[5];
-        }
-        else
-        {
-            return _colorScale[6];
-        }
+        return _colorScale[0];
+//        //buckets of size _colorShiftRate
+//        if (hits < _colorShiftRate)
+//        {
+//            return _colorScale[0];
+//        }
+//        else if (hits < 2 * _colorShiftRate)
+//        {
+//            return _colorScale[1];
+//        }
+//        else if (hits < 3 * _colorShiftRate)
+//        {
+//            return _colorScale[2];
+//        }
+//        else if (hits < 4 * _colorShiftRate)
+//        {
+//            return _colorScale[3];
+//        }
+//        else if (hits < 5 * _colorShiftRate)
+//        {
+//            return _colorScale[4];
+//        }
+//        else if (hits < 6 * _colorShiftRate)
+//        {
+//            return _colorScale[5];
+//        }
+//        else
+//        {
+//            return _colorScale[6];
+//        }
     }
-
 }

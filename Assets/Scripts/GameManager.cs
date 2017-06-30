@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
 	public int numOfBalls = 3;
     public int powerUpsGatheredThisTurn = 0;
+    public GameObject breakParticles;
 
     private AimManager _aimManager;
     private SpawnManager _spawnManager;
@@ -81,6 +82,18 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Time.timeScale = 2;
+        }
+        if (Input.GetKeyUp(KeyCode.Return))
+        {
+            Time.timeScale = 1;
+        }
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -132,4 +145,12 @@ public class GameManager : MonoBehaviour {
 	public void MoveAimManager(float newX){
 		_aimManager.moveX(newX);
 	}
+
+    public void SpawnParticles(Vector3 location)
+    {
+        GameObject particles = (GameObject) Instantiate(breakParticles, location, Quaternion.identity);
+
+        //destroy after 2 seconds to be safe
+        Destroy(particles.gameObject, 5.0f);
+    }
 }
